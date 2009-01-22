@@ -72,6 +72,13 @@ module AssetTags
     asset = find_asset(tag, options)
     asset.asset_file_name rescue nil
   end
+
+  tag "assets:path" do |tag|
+    options = tag.attr.dup
+    asset = find_asset(tag, options)
+    asset.asset_file_name rescue nil
+    %{/assets/#{asset.id}/#{asset.asset_file_name}} rescue nil
+  end
   
   desc %{
     Renders an image tag for the asset. Using the option size attribute, different sizes can be display. Thumbnail and icon are built 
